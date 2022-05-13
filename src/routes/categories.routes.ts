@@ -15,13 +15,14 @@ categoriesRoutes.post('/', (request, response) => {
   categoriesRespository.create({
     name,
     description,
-    created_at: new Date(),
   });
 
   return response.status(201).send();
 });
 
 categoriesRoutes.get('/', (requeste, response) => {
+  const categories = categoriesRespository.index();
+
   return response.status(200).json({ categories });
 });
 
