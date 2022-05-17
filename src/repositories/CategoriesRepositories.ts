@@ -8,8 +8,16 @@ class CategoriesRepository {
     this.categories = [];
   }
 
+  private findCategory(name: string): Category {
+    const category = this.categories.find((category) => category.name === name);
+
+    return category;
+  }
+
   public create({ name, description }: ICreateCategoryDTO): void {
     const category: Category = new Category();
+
+    if (this.findCategory(name)) throw Error('Category already exists');
 
     Object.assign(category, {
       name,
