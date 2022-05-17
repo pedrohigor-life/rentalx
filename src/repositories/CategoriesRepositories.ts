@@ -1,14 +1,15 @@
 import { ICreateCategoryDTO } from '../dtos/ICreateCategoryDTO';
 import { Category } from '../models/Category';
+import { ICategoriesRepository } from './ICategoriesRepository';
 
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
     this.categories = [];
   }
 
-  public findCategory(name: string): Category {
+  public findbyName(name: string): Category {
     const category = this.categories.find((category) => category.name === name);
 
     return category;
