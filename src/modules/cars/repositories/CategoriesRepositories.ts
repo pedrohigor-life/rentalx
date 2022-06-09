@@ -9,12 +9,6 @@ class CategoriesRepository implements ICategoriesRepository {
     this.categories = [];
   }
 
-  public findbyName(name: string): Category {
-    const category = this.categories.find((category) => category.name === name);
-
-    return category;
-  }
-
   public create({ name, description }: ICreateCategoryDTO): void {
     const category: Category = new Category();
 
@@ -31,6 +25,12 @@ class CategoriesRepository implements ICategoriesRepository {
 
   public index(): Category[] {
     return this.categories;
+  }
+
+  public findbyName(name: string): Category {
+    const category = this.categories.find((category) => category.name === name);
+
+    return category;
   }
 }
 

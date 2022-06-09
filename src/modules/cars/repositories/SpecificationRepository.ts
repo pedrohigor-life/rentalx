@@ -5,15 +5,7 @@ import { ISpecificationRepository } from './ISpecificationsRepository';
 class SpecificationRepository implements ISpecificationRepository {
   private specifications: Specification[];
 
-  findByName(name: string): boolean {
-    const specification = this.specifications.some(
-      (specification) => specification.name === name
-    );
-
-    return specification;
-  }
-
-  create({ name, description }: ICreateSpecificationDTO): void {
+  public create({ name, description }: ICreateSpecificationDTO): void {
     const specification = new Specification();
 
     Object.assign(specification, {
@@ -24,8 +16,17 @@ class SpecificationRepository implements ISpecificationRepository {
 
     this.specifications.push(specification);
   }
-  index(): Specification[] {
+
+  public index(): Specification[] {
     return this.specifications;
+  }
+
+  public findByName(name: string): boolean {
+    const specification = this.specifications.some(
+      (specification) => specification.name === name
+    );
+
+    return specification;
   }
 
   constructor() {
