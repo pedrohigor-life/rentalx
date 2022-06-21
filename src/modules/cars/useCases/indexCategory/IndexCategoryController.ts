@@ -5,8 +5,8 @@ class IndexCategoryController {
   constructor(private indexCategoryUseCase: IndexCategoryUseCase) {}
 
   handle(request: Request, response: Response): Response {
-    const data = this.indexCategoryUseCase.execute();
-    return response.status(200).json({ data });
+    const categories = this.indexCategoryUseCase.execute();
+    return response.status(200).json({ categories });
   }
 }
 
