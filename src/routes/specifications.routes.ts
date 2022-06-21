@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { createSpecificationController } from '../modules/cars/useCases/createSpecification';
+import { indexSpecificationController } from '../modules/cars/useCases/IndexSpecifications';
 
 const specificationRoutes = Router();
 
@@ -8,13 +9,7 @@ specificationRoutes.post('/', (request, response) => {
 });
 
 specificationRoutes.get('/', (request, response) => {
-  const indexSpecificationService = new IndexSpecificationService(
-    specificationRepository
-  );
-
-  const specifications = indexSpecificationService.execute();
-
-  return response.status(200).json({ specifications });
+  indexSpecificationController.handle(request, response);
 });
 
 export { specificationRoutes };
