@@ -4,20 +4,10 @@ import { Category } from '../../entities/Category';
 import { ICategoriesRepository } from '../ICategoriesRepository';
 
 class CategoriesRepository implements ICategoriesRepository {
-  private static INSTANCE: CategoriesRepository;
-
   private repository: Repository<Category>;
 
-  private constructor() {
+  constructor() {
     this.repository = getRepository(Category);
-  }
-
-  public static getInstance(): CategoriesRepository {
-    if (!CategoriesRepository.INSTANCE) {
-      CategoriesRepository.INSTANCE = new CategoriesRepository();
-    }
-
-    return CategoriesRepository.INSTANCE;
   }
 
   public async create({
@@ -30,8 +20,6 @@ class CategoriesRepository implements ICategoriesRepository {
     });
 
     await this.repository.save(category);
-
-    return;
   }
 
   public async index(): Promise<Category[]> {

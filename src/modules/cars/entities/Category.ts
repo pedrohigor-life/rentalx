@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import { v4 as uuidV4 } from 'uuid';
 
 @Entity('categories')
 class Category {
@@ -16,7 +16,9 @@ class Category {
   created_at: Date;
 
   constructor() {
-    if (!this.id) this.id = uuidv4();
+    if (!this.id) {
+      this.id = uuidV4();
+    }
   }
 }
 
