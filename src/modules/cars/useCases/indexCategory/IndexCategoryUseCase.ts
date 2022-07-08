@@ -10,4 +10,5 @@ class IndexCategoryUseCase {
     return categories;
   }
 }
+
 export { IndexCategoryUseCase };
