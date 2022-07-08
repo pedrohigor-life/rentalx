@@ -4,8 +4,8 @@ import { IndexCategoryUseCase } from './IndexCategoryUseCase';
 class IndexCategoryController {
   constructor(private indexCategoryUseCase: IndexCategoryUseCase) {}
 
-  handle(request: Request, response: Response): Response {
-    const categories = this.indexCategoryUseCase.execute();
+  async handle(request: Request, response: Response): Promise<Response> {
+    const categories = await this.indexCategoryUseCase.execute();
     return response.status(200).json({ categories });
   }
 }
